@@ -28,7 +28,7 @@ read -p "Enter Domain: " domain
 read -p "Limit(100-500 recommended): " limit
 read -p "Saved file-name: " file
 read -p "Do you want to add google dorks?(y/n): " choice
-if [ "$choice" -eq "y" -o "$choice" -eq "Y" ]
+if [ "$choice" -eq "y"]
 then
 read -p "Google Dork: " googledork
 theHarvester -d $domain -l $limit -g $googledork -b all -f $file
@@ -60,6 +60,7 @@ elif [ "$choice" -eq "n" -o "$choice" -eq "N" ]
 then
 echo "No Google Dorks."
 theHarvester -d $domain -l $limit -s -b all -f $file_op3
+fi
 ;;
 4)
 echo "OSINT with Proxies
