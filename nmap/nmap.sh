@@ -13,7 +13,8 @@ Option 4: UDP Scan
 Option 5: NULL, FIN & XMAS Scan
 Option 6: ACK Scan
 Option 7: Idle Scan
-Option 8: Firewal bypass Scan
+Option 8: Firewall bypass Scan
+Option 9: Aggressive Scan
  "
 read -p "Choice: " choice
 if [ "$choice" -eq 1 ]
@@ -55,7 +56,10 @@ nmap -sI $zombie $ip -oN $file
 elif [ "$choice" -eq 8 ]
 then
 nmap -sS -T4 $ip --script firewall-bypass -oN $file
- fi
+elif [ "$choice" -eq 9 ]
+then
+nmap -sV -sC -A $ip  -T 4 -oN $file
+fi
 else
  echo "Not a valid option"
 fi
