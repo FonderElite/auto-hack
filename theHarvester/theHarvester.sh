@@ -27,15 +27,15 @@ case $option in
 read -p "Enter Domain: " domain
 read -p "Limit(100-500 recommended): " limit
 read -p "Saved file-name: " file
-read -p "Do you want to add google dorks?(y/n): " choice
-if [ "$choice" -eq "y"]
+read -p  "Do you want to add google dorks?(1=yes/0=no): " choice
+if [ $choice -eq 1 ]
 then
 read -p "Google Dork: " googledork
-theHarvester -d $domain -l $limit -g $googledork -b all -f $file
-elif [ "$choice" -eq "n" -o "$choice" -eq "N" ]
+theHarvester -d $domain -l $limit -s -g $googledork -b all -f $file
+elif [ "$choice" -eq 0 ]
 then
 echo "No Google Dorks."
-theHarvester -d $domain -l $limit -b all 
+theHarvester -d $domain -l $limit -s -b all -f $file
 fi
 ;;
 2)
@@ -51,12 +51,12 @@ echo "OSINT with shodan
 read -p "Enter Domain: " domain_op3
 read -p "Limit(100-500 recommended): " limit_op3
 read -p "Saved file-name: " file_op3
-read -p "Do you want to add google dorks?(y/n): " choice_op3
-if [ "$choice_op3" -eq "y" -o "$choice_op3" -eq "Y" ]
+read -p "Do you want to add google dorks?(y=1/n=0): " choice_op3
+if [ "$choice_op3" -eq 1 ]
 then
 read -p "Google Dork: " googledork_op3
 theHarvester -d $domain_op3 -l $limit_op3 -s -g $googledork_op3 -b all -f $file_op3
-elif [ "$choice" -eq "n" -o "$choice" -eq "N" ]
+elif [ "$choice" -eq 0 ]
 then
 echo "No Google Dorks."
 theHarvester -d $domain -l $limit -s -b all -f $file_op3
@@ -69,11 +69,12 @@ echo "OSINT with Proxies
 read -p "Enter Domain: " domain_op4
 read -p "Limit(100-500 recommended): " limit_op4
 read -p "Saved file-name: " file_op4
-if [ "$choice_op4" -eq "y" -o "$choice_op4" -eq "Y" ]
+read -p "Do you want to add google dorks?(y=1/n=0): " choice_op4
+if [ "$choice_op4" -eq 1 ]
 then
 read -p "Google Dork: " googledork_op3
 theHarvester -d $domain_op4 -l $limit_op4 -g $googledork_op4 -p -b all -f $file_op4
-elif [ "$choice" -eq "n" -o "$choice" -eq "N" ]
+elif [ "$choice" -eq 0 ]
 then
 echo "No Google Dorks."
 theHarvester -d $domain_op4 -l $limit_op4 -p -b all -f $file_op4
