@@ -32,7 +32,7 @@ case $choice in
    fi
 ;;
 
-essac
+
 2)
 read -p "Do you know the user(y=1/n=0): " intel_2
   if [ "$intel" -eq 1 ]
