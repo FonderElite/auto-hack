@@ -19,7 +19,9 @@ read -p "IP: " ip
 read -p "Wordlist location: " wordl
  
 case $choice in
-1)
+
+  1)
+    echo -n "Lithuanian"
  read -p "Do you know the user(y=1/n=0): " intel
   if [ "$intel" -eq 1 ]
    then
@@ -30,23 +32,33 @@ case $choice in
    read -p "Users wordlist location: " user_loc 
    hydra -l $user_loc -P $wordl ssh://$ip
    fi
-;;
 
+    ;;
 
-2)
+  2)
+    echo -n "Romanian"
 read -p "Do you know the user(y=1/n=0): " intel_2
-  if [ "$intel" -eq 1 ]
+ if [ "$intel" -eq 1 ]
   then
   read -p "User: " user_2
   hydra -l $user_2 -P $wordl ftp://$ip
-  elif [ "$intel_2" -eq 0 ]
+ elif [ "$intel_2" -eq 0 ]
   then
   read -p "Users wordlist location: " user_loc2 
   hydra -l $user_loc2 -P $wordl ftp://$ip
-  fi
-;;
+  fi  
+
+    ;;
+
+  3)
+    echo -n "Italian"
+    ;;
+
+  4)
+    echo -n "unknown"
+    ;;
+esac
  else
 sudo apt update 
 sudo apt install hydra
-fi
-                 
+fi     
