@@ -10,7 +10,7 @@ echo "
 ║║║╚═╗╠╣───╚╗╔╝├┤ │││║ ║│││
 ╩ ╩╚═╝╚     ╚╝ └─┘┘└┘╚═╝┴ ┴
 "
-echo "Github:https://github.com/fonderelite"
+echo "Github:https://github.com/Fonderelite"
 fi
 }
 
