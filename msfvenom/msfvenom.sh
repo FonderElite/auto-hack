@@ -34,6 +34,10 @@ Option7:Handlers[6]
 read -p "Choice~: " choice
 read -p "Input Your IP~: " ip
 read -p "Port to listen(default=4444)~: " port
+if [ -z $port ] 
+then
+port=4444
+fi
 if [[ $choice -eq 0 ]];then
 echo "Binary Payload
 ======================
@@ -180,3 +184,4 @@ banner
 payload
 }
 main
+         
