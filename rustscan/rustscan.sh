@@ -13,9 +13,9 @@ then
      then
      echo  "Scan saved at $outfile"
     fi
-elif [ -f "$FILE_DEB" ] && [ -f "$FILE" -eq false ]
+elif [ -f "$FILE_DEB" ] && [ ! -f "$FILE" ]
 then
- sudo dpkg i $FILE_DEB
+ sudo dpkg -i $FILE_DEB
 else
 echo "Both of the files are missing."
 sleep 1
