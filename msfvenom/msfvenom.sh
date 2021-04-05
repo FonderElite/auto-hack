@@ -22,7 +22,7 @@ Option2:Windows[1]
 ==================
 Option3:Mac[2]
 ==================
-Option4:WebPayloads[3]
+Option4:Web-Payloads[3]
 ==================
 Option5:Scripting-Payloads[4]
 ==================
