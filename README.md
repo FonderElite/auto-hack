@@ -2,5 +2,5 @@
 >Automation with bash scripts!
 >
 
-# Demo 
+# Nikto Automated Scan Example
 <img src="sample.png" width=700>
