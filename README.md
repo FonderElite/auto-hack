@@ -1,6 +1,6 @@
-# 🦾 Auto-hack
+# 🟢 Auto-hack
 >Automation with bash scripts!
 >
 
-# 👽 Nikto Automated Scan Example
-<img src="sample.png" width=700>
+# 🩸 MsfVenom Auto starts Metasploit!
+<img src="msf.png" width=700>
