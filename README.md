@@ -13,3 +13,7 @@
 ## Why Use Bash Scripting?
 Bash scripts can be used for various purposes, such as executing a shell command, running multiple commands together, customizing administrative tasks, performing task automation etc. So knowledge of bash programming basics is important for every Linux user.
 </hr>
+
+## ⏲️ Real Hackers hack time!
+Hackers are also time hackers, we always need to remember that time is not on anyone's side but as long as you keep pp the pace with it then it will not be as cruel
+to you.
