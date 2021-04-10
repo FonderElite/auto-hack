@@ -15,6 +15,7 @@ Option 6: ACK Scan
 Option 7: Idle Scan
 Option 8: Firewall bypass Scan
 Option 9: Aggressive Scan
+Option 10: Vulnerability Scan
  "
 read -p "Choice: " choice
 if [ "$choice" -eq 1 ]
@@ -59,7 +60,11 @@ nmap -sS -T4 $ip --script firewall-bypass -oN $file
 elif [ "$choice" -eq 9 ]
 then
 nmap -sV -sC -A $ip  -T 4 -oN $file
+elif [ "$choice" -eq 10 ]
+then
+nmap --script=vuln $ip -oN $file
 fi
 else
  echo "Not a valid option"
 fi
+        
