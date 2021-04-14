@@ -1,5 +1,5 @@
 echo "Automated Rustscan"
-echo "Made By FonderElite \n"
+echo "Made By FonderElite"
 sleep 1
 FILE=/usr/bin/rustscan
 FILE_DEB=rustscan_2.0.1_amd64.deb
@@ -31,4 +31,3 @@ echo "Both of the files are missing."
 sleep 1
 echo "/usr/bin/rustscan and .deb file"
 fi
-       
