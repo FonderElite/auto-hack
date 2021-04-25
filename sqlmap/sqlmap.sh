@@ -16,8 +16,13 @@ Github:FonderElite
 }
 
 function booleanBased() {
-echo "Boolean Based Technique"
-
+echo "Boolean Based Technique" 
+read -p "Url: " url1
+read -p "Data used in post req: " data1
+read -p "Testable Parameter(ex. search): " p1
+read -p "Level: " lvl1
+read -p "Risk: " risk1
+sqlmap --url="$url1" --method=POST --data="$data1" -p "$p1" -a --level=$lvl1 --risk=risk1 --flush-session --technique=B
 }
 function choices() {
 echo "
@@ -43,6 +48,7 @@ case $choice in
  booleanBased
  ;;
  esac
+
 }
 
 function main() {
