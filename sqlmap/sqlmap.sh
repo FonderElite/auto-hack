@@ -99,6 +99,22 @@ else
 sqlmap -u "$url5"  --dump --users --passwords --risk=$risk5 --level=$level5 --technique=BEUSTQ  
 fi
 }
+
+function crawl() {
+printf "Crawl & Discovery \n\n"
+read -p "Do you have a cookie(y=1/n=0): " cookiein7
+read -p "Url: " url7
+read -p "Crawl Level: " crawl7
+read -p "Level: " level7
+read -p "Risk level: " risk7
+if [ "$cookiein7" -eq 1 ]
+then
+read -p "Cookie: " cookie7
+sqlmap -u http://example.com --forms --batch --crawl=$crawl7 --cookie=$cookie7 --level=$level7 --risk=$risk7
+else
+sqlmap -u http://example.com --forms --batch --crawl=$crawl7  --level=$level7 --risk=$risk7
+fi
+}
 function choices() {
 echo "
 -----------------------
@@ -140,7 +156,7 @@ timeBased
 #Inline Queries
 ;;
 7)
-#Crawl & Discovery
+crawl
 ;;
 esac
 
@@ -157,3 +173,4 @@ sudo apt update && sudo apt install sqlmap
 fi
 }
 main
+
