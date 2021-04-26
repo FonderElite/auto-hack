@@ -74,15 +74,15 @@ if [ "$cookiein4" -eq 1 ] && [ "$verbosein4" -eq 1 ]
 then
 read -p "Cookie: " cookie4
 read -p "Verbosity Level: " verbose4
-sqlmap -u "$url" --cookie="$cookie4" --data="$data4" -p="$p4" -v=$verbose4 --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u "$url" --method=POST --cookie="$cookie4" --data="$data4" -p="$p4" -v=$verbose4 --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
 elif [ "$cookiein4" -eq 1 ]
 then
-sqlmap -u "$url" --cookie="$cookie4" --data="$data4" -p "$p4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u "$url" --method=POST --cookie="$cookie4" --data="$data4" -p "$p4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
 elif [ "$verbosein4" -eq 1 ]
 then
-sqlmap -u="$url" --data="$data4" -p="$p4" -v="$verbose4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u="$url" --method=POST --data="$data4" -p="$p4" -v="$verbose4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
 else
-sqlmap -u="$url"  --data="$data4" -p="$p4"  --dbms=Mysql --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u="$url"  --method=POST --data="$data4" -p="$p4"  --dbms=Mysql --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
 fi
 }
 function choices() {
@@ -117,7 +117,7 @@ case $choice in
 unionQueryBased
 ;;
 4)
-#Stacked Queries
+stackedQuery
 ;;
 5)
 #TimeBased Blind
