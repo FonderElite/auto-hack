@@ -82,7 +82,7 @@ elif [ "$verbosein4" -eq 1 ]
 then
 sqlmap -u="$url" --method=POST --data="$data4" -p="$p4" -v="$verbose4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
 else
-sqlmap -u="$url"  --method=POST --data="$data4" -p="$p4"  --dbms=Mysql --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+sqlmap -u="$url"  --method=POST --data="$data4" -p="$p4"  --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
 fi
 }
 function choices() {
