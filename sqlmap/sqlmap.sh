@@ -16,7 +16,7 @@ Github:FonderElite
 }
 
 function booleanBased() {
-echo "Boolean Based Technique" 
+printf "Boolean Based Technique \n\n" 
 read -p "Do you have cookies?(y=1/n=0): " cookiein1
 read -p "Url: " url1
 read -p "Data used in post req: " data1
@@ -32,7 +32,7 @@ sqlmap --url="$url1" --method=POST --data="$data1" -p "$p1" -a --level=$lvl1 --r
 fi
 }
 function errorBased() {
-echo "Error-Based Technique"
+printf "Error-Based Technique \n\n"
 read -p "Do you have cookies?(y=1/n=0) " cookiein2 
 read -p "Url: " url2
 read -p "Data used in post req: " data2
@@ -44,6 +44,20 @@ read -p "Cookie: " cookie2
 sqlmap --url="$url2" --method=POST --data="$data2" --cookie="$cookie2" -p "search" -a --level=$lvl2 --risk=$risk2 --flush-session --technique=E
 else
 sqlmap --url="$url2" --method=POST --data="$data2" -p "search" -a --level=$lvl2 --risk=$risk2 --flush-session --technique=E
+fi
+}
+function unionQueryBased() {
+printf "Union-Query Based \n\n"
+read -p "Verbose?(y=1/y=0): " verbosein3
+read -p "Url: " url3
+read -p "Level: " lvl3
+read -p "Risk: " risk3
+if [ "$verbosein3" -eq 1 ] 
+then
+read -p "Verbosity Level: " verbose3
+sqlmap -v=$verbose3 --url="$url3" --method=POST -a --level=$level3 --risk=$risk3 --flush-session --technique=U
+else
+sqlmap -v=$verbose3 --url="$url3" --method=POST -a --level=$level3 --risk=$risk3 --flush-session --technique=U
 fi
 }
 function choices() {
@@ -63,6 +77,8 @@ echo "
 -----------------------
 |6: Inline queries
 -----------------------
+|7: Crawl & Discovery
+-----------------------
 "
 read -p "Choice~: " choice
 case $choice in
@@ -71,7 +87,10 @@ case $choice in
  ;;
 2)
  errorBased
- ;; 
+ ;;
+3)
+unionQueryBased
+;;
 esac
 
 }
@@ -87,3 +106,4 @@ sudo apt update && sudo apt install sqlmap
 fi
 }
 main
+
