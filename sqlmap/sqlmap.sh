@@ -91,6 +91,18 @@ case $choice in
 3)
 unionQueryBased
 ;;
+4)
+#Stacked Queries
+;;
+5)
+#TimeBased Blind
+;;
+6)
+#Inline Queries
+;;
+7)
+#Crawl & Discovery
+;;
 esac
 
 }
