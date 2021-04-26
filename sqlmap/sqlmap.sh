@@ -132,6 +132,25 @@ sqlmap -u http://example.com --forms --batch --crawl=$crawl7  --level=$level7 --
 fi
 }
 
+function googleDork() {
+read -p "Use random user-agent?(y=1/n=0): " useragent8
+read -p "Use a proxy?(y=1/n=0): " proxyin8
+read -p "Google Dork: " googledork8
+if [ "$useragent8" -eq 1 ] && [ "$proxyin8" -eq 1 ]
+then
+read -p "Proxy: " $proxy8
+sqlmap -g "$googledork8" --random-agent --proxy="$proxy8" --batch 
+elif [ "$useragent8" -eq 1 ] 
+then
+sqlmap -g "$googledork8"  --random-agent --batch 
+elif [ "$proxyin8" -eq 1 ]
+then
+read -p "Proxy: " proxya8
+sqlmap -g "$googledork8" --random-agent --proxy="$proxya8" --batch 
+else
+sqlmap -g "$googledork8" --batch 
+fi
+}
 function choices() {
 echo "
 -----------------------
@@ -175,6 +194,9 @@ inlineQuery
 7)
 crawl
 ;;
+8)
+googleDork
+;;
 esac
 
 }
@@ -191,3 +213,4 @@ fi
 }
 main
 
+           
