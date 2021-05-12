@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Automated Rustscan"
 echo "Made By FonderElite"
 sleep 1
