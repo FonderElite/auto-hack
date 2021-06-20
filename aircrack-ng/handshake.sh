@@ -3,6 +3,7 @@ function handshake(){
 if [ $EUID -eq 0 ]
 then
 echo "Grabbing the handshake from target."
+echo "----------------------------------"
 read -p "Interface: " iface
 read -p "Channel of the AP: " channel
 read -p "BSSID: " bssid
