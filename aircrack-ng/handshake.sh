@@ -9,7 +9,7 @@ read -p "BSSID: " bssid
 read -p "File to write: " file
 read -p "Do you wish to start now?(y/n): " choice
 if [[ $choice == "y" ]];then
-sudo airodump-ng --bssid $bssid -c 6 --write $file $iface
+sudo airodump-ng --bssid $bssid -c $channel --write $file $iface
 
 elif [[ $choice == "n" ]];then
 echo "Chose option: no."
