@@ -32,15 +32,25 @@ function main(){
 read -p "Do you want to run the function of killing processes and starting airmon-ng?(y/n): " airmon
 if [[ $airmon == "y" ]];then
 configure
+read -p "Do you want to run airodump-ng?(y/n): " run
+if [[ $run == "y" ]];then
 echo "Starting airodump-ng..."
 sleep 2
 airodump-ng
+elif [[ $run == "n" ]];then
+echo "Chose option no."
+fi
 elif [[ $airmon == "n" ]];then
 echo "Skipping automated configuration."
+read -p "Do you want to run airodump-ng?(y/n): " run
+if [[ $run == "y" ]];then
 echo "Starting airodump-ng..."
 sleep 2
 airodump-ng
+elif [[ $run == "n" ]];then
+      echo "Skipping Airodump-ng."
+fi
 fi
 }
 main
-                
+              
